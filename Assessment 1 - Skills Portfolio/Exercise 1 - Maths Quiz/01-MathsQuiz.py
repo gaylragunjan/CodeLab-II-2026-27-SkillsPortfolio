@@ -3,6 +3,7 @@
 
 import tkinter as tk
 import random
+from tkinter import messagebox
 
 # variables
 
@@ -10,6 +11,7 @@ questions = 10
 difficulty = ""
 score = 0
 answer = 0
+count = 0
 
 # random numbers
 
@@ -41,7 +43,64 @@ def make_question():
     answer = operations[add_or_subtract](a, b)
 
     random_question.config(text=f"{a} {add_or_subtract} {b} = ?")
-    difficulty_label.config(text=f"{difficulty} Mode / Question #__")
+    difficulty_label.config(text=f"{difficulty} Mode / Question #{count}")
+
+# chain of questions
+
+def next_question():
+    answer_entry.delete(0, tk.END)
+    answer_entry.config(fg="#000000")
+    answer_entry.focus()
+
+    make_question()
+
+# checking an answer
+
+def check():
+    global score, count
+
+    try:
+        guess = int(answer_entry.get())
+    except ValueError:
+        messagebox.showerror("Nuh Uh!", "not a number!")
+
+        def clear_warning():
+            messagebox.showerror("Nuh Uh!", "not a number!")
+
+        answer_entry.after(1200, clear_warning)
+        return
+
+    if guess == answer:
+        score += 1
+    else:
+        messagebox.showerror("Nuh Uh!", f"Wrong answer friend... It was {answer}!")
+
+    count += 1
+
+    # score_update.config(text=f"Score: {score}") 
+
+    if count >= questions:
+        show_results()
+    else:
+        next_question()
+
+
+# results!!!
+
+def show_results():
+
+    if score == 10:
+        msg = "Perfect score! Mathematical!!!"
+    elif score >= 8:
+        msg = "Dang... Almost perfect!"
+    elif score >= 5:
+        msg = "You can do better!"
+    else:
+        msg = "Oh Glorb! Gotta practice sum more..."
+
+    # final_score.config(text=f"{score} / 10")
+
+    # congrats_message.config(text=msg)
 
 
 root = tk.Tk()
@@ -57,5 +116,8 @@ random_question.pack()
 
 difficulty_label = tk.Label(root, text="", font=(18), fg="#05342F")
 difficulty_label.pack()
+
+answer_entry = tk.Entry(root, text="", font=(18), fg="#05342F")
+answer_entry.pack()
 
 root.mainloop()
