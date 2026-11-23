@@ -1,0 +1,102 @@
+[
+  {
+    "number": 1345,
+    "name": "John Curry",
+    "marks": [
+      8,
+      15,
+      7
+    ],
+    "exam": 45
+  },
+  {
+    "number": 2345,
+    "name": "Sam Sturtivant",
+    "marks": [
+      14,
+      15,
+      14
+    ],
+    "exam": 77
+  },
+  {
+    "number": 9876,
+    "name": "Lee Scott",
+    "marks": [
+      17,
+      11,
+      16
+    ],
+    "exam": 99
+  },
+  {
+    "number": 3724,
+    "name": "Matt Thompson",
+    "marks": [
+      19,
+      11,
+      15
+    ],
+    "exam": 81
+  },
+  {
+    "number": 1212,
+    "name": "Ron Herrema",
+    "marks": [
+      14,
+      17,
+      18
+    ],
+    "exam": 66
+  },
+  {
+    "number": 8439,
+    "name": "Jake Hobbs",
+    "marks": [
+      10,
+      11,
+      10
+    ],
+    "exam": 43
+  },
+  {
+    "number": 2344,
+    "name": "Jo Hyde",
+    "marks": [
+      6,
+      15,
+      10
+    ],
+    "exam": 55
+  },
+  {
+    "number": 9384,
+    "name": "Gareth Southgate",
+    "marks": [
+      5,
+      6,
+      8
+    ],
+    "exam": 33
+  },
+  {
+    "number": 8327,
+    "name": "Alan Shearer",
+    "marks": [
+      20,
+      20,
+      20
+    ],
+    "exam": 100
+  },
+  {
+    "number": 2983,
+    "name": "Les Ferdinand",
+    "marks": [
+      15,
+      17,
+      18
+    ],
+    "exam": 92
+  }
+]
