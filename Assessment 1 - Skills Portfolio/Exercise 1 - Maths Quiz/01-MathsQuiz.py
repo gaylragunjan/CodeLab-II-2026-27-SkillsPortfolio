@@ -68,12 +68,14 @@ def check():
     try:
         guess = int(answer_entry.get())
     except ValueError:
-        messagebox.showerror("Nuh Uh!", "Not a number!")
         answer_entry.delete(0, tk.END)
+        answer_entry.insert(0, "not a numberrrrrr!!")
+        answer_entry.config(fg="#475F5B")
 
         def clear_warning():
-            messagebox.showerror("Nuh Uh!", "Not a number!")
-            answer_entry.delete(0, tk.END)
+            if answer_entry.get() == "not a numberrrrrr!!":
+                answer_entry.delete(0, tk.END)
+                answer_entry.config(fg="#05342F")
 
         answer_entry.after(1200, clear_warning)
         return
@@ -146,6 +148,7 @@ root.geometry("310x410")
 root.resizable(False, False)
 
 root.configure(bg="#25AD9F")
+root.iconbitmap(path("Assets/bmo.ico"))
 
 # load images / font
 
