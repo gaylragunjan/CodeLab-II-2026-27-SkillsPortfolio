@@ -137,7 +137,7 @@ def start_game(level):
 main_directory = os.path.dirname(os.path.abspath(__file__))
 
 def path(filename):
-    return os.path.join(main_directory, filename)
+    return os.path.join(main_directory, "Assets", filename)
 
 # window
 
@@ -148,25 +148,25 @@ root.geometry("310x410")
 root.resizable(False, False)
 
 root.configure(bg="#25AD9F")
-root.iconbitmap(path("Assets/bmo.ico"))
+root.iconbitmap(path("bmo.ico"))
 
 # load images / font
 
-bmo_screen = ImageTk.PhotoImage(Image.open(path("Assets/bmo_screen.png")))
-logo = ImageTk.PhotoImage(Image.open(path("Assets/logo.png")))
+bmo_screen = ImageTk.PhotoImage(Image.open(path("bmo_screen.png")))
+logo = ImageTk.PhotoImage(Image.open(path("logo.png")))
 
-decor_buttons_1 = ImageTk.PhotoImage(Image.open(path("Assets/decor_buttons_1.png")))
-decor_buttons_2 = ImageTk.PhotoImage(Image.open(path("Assets/decor_buttons_2.png")))
-decor_buttons_3 = ImageTk.PhotoImage(Image.open(path("Assets/decor_buttons_3.png")))
+decor_buttons_1 = ImageTk.PhotoImage(Image.open(path("decor_buttons_1.png")))
+decor_buttons_2 = ImageTk.PhotoImage(Image.open(path("decor_buttons_2.png")))
+decor_buttons_3 = ImageTk.PhotoImage(Image.open(path("decor_buttons_3.png")))
 
-easy_button = ImageTk.PhotoImage(Image.open(path("Assets/easy_button.png")))
-medium_button = ImageTk.PhotoImage(Image.open(path("Assets/medium_button.png")))
-hard_button = ImageTk.PhotoImage(Image.open(path("Assets/hard_button.png")))
+easy_button = ImageTk.PhotoImage(Image.open(path("easy_button.png")))
+medium_button = ImageTk.PhotoImage(Image.open(path("medium_button.png")))
+hard_button = ImageTk.PhotoImage(Image.open(path("hard_button.png")))
 
-entry_box = ImageTk.PhotoImage(Image.open(path("Assets/entry_box.png")))
-interactable_button = ImageTk.PhotoImage(Image.open(path("Assets/interactable_button.png")))
-score_bar = ImageTk.PhotoImage(Image.open(path("Assets/score_bar.png")))
-submit_button = ImageTk.PhotoImage(Image.open(path("Assets/submit_button.png")))
+entry_box = ImageTk.PhotoImage(Image.open(path("entry_box.png")))
+interactable_button = ImageTk.PhotoImage(Image.open(path("interactable_button.png")))
+score_bar = ImageTk.PhotoImage(Image.open(path("score_bar.png")))
+submit_button = ImageTk.PhotoImage(Image.open(path("submit_button.png")))
 
 Thunderman = "Thunderman" # impooortant: font has to be pre installed in the users system 
 
