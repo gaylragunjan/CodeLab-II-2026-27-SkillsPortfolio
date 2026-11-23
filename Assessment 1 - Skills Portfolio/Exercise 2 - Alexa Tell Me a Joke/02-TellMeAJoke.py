@@ -46,7 +46,6 @@ root.resizable(False, False)
 root.configure(bg="#5A5A5A")
 root.iconbitmap(path("cgmyl.ico")) 
 
-Riddleprint = "Riddleprint"
 bg = ImageTk.PhotoImage(Image.open(path("the_jokester.png")))
 
 # background
