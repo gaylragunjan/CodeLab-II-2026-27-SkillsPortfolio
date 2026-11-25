@@ -132,6 +132,11 @@ def start_game(level):
     da_game.tkraise()
     next_question()
 
+def quit_game():
+    messagebox.showerror("Quit Game", "Want to Exit?")
+    root.destroy()
+    
+
 # annoying path error fix... solution...
 
 main_directory = os.path.dirname(os.path.abspath(__file__))
@@ -232,19 +237,20 @@ da_game = tk.Frame(root, bg="#25AD9F")
 
 tk.Label(da_game, image=bmo_screen, bg="#25AD9F").place(x=15, y=16)
 
-# decorations
+# quit button
 
-tk.Label(da_game, image=decor_buttons_1, bg="#25AD9F").place(x=47.77, y=210.02)
+tk.Button(da_game, image=decor_buttons_1, bg="#25AD9F", highlightthickness=0, activebackground="#25AD9F", borderwidth=0, relief="flat", command=lambda:quit_game()).place(x=47.77, y=210.02)
 
 # difficulty and question number
 
 difficulty_label = tk.Label(da_game, text="Easy Mode / Question #1", font=(Thunderman, 12), fg="#05342F", justify="center", bg="#B9DFCA")
 difficulty_label.place(x=150, y=86, anchor="center")
 
-# question
+# question + instruction
 
 random_question = tk.Label(da_game, text="", font=(Thunderman, 18), fg="#05342F", justify="center", bg="#B9DFCA")
 random_question.place(x=150, y=126, anchor="center")
+tk.Label(da_game, text="( Click the Small Button to Quit! )", font=(Thunderman, 8), justify="center", fg="#5D7F74", bg="#B9DFCA").place(relx=0.5, y=155, anchor="center")
 
 # entry box
 
