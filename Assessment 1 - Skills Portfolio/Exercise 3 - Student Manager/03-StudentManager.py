@@ -117,6 +117,78 @@ def sort():
     descending = not descending 
     sort_swap.configure(text="Sort ↑" if descending else "Sort ↓")
 
+def save():
+    edit_file()
+    view_all()
+
+def add():
+    number = simpledialog.askinteger("Add Student", "Student number (1000 - 9999):", minvalue=1000, maxvalue=9999)
+    if number is None:
+        return
+    if any(s["number"] == number for s in students):
+        messagebox.showerror("Error", f"Student number {number} already exists")
+        return
+
+    name = simpledialog.askstring("Add Student", "Full name:")
+    if not name or not name.strip():
+        return
+
+    mark1 = simpledialog.askinteger("Add Student", "CW 1 (0 - 20):", minvalue=0, maxvalue=20)
+    if mark1 is None:
+        return
+    mark2 = simpledialog.askinteger("Add Student", "CW 2 (0 - 20):", minvalue=0, maxvalue=20)
+    if mark2 is None:
+        return
+    mark3 = simpledialog.askinteger("Add Student", "cW 3 (0 - 20):", minvalue=0, maxvalue=20)
+    if mark3 is None:
+        return
+
+    exam = simpledialog.askinteger("Add Student", "Exam (0 - 100):", minvalue=0, maxvalue=100)
+    if exam is None:
+        return
+
+    students.append({"number": number, "name": name.strip(), "marks": [mark1, mark2, mark3], "exam": exam})
+    save()
+
+def update():
+    student = find()
+    if not student:
+        return
+
+    number = simpledialog.askinteger("Update Student", "Student number (1000 - 9999):", minvalue=1000, maxvalue=9999)
+    if number is None:
+        return
+
+    name = simpledialog.askstring("Update Student", "Full name:", initialvalue=student["name"])
+    if not name or not name.strip():
+        return
+
+    mark1 = simpledialog.askinteger("Update Student", "CW 1 (0 - 20):", initialvalue=student["marks"][0], minvalue=0, maxvalue=20)
+    if mark1 is None:
+        return
+    mark2 = simpledialog.askinteger("Update Student", "CW 2 (0 - 20):", initialvalue=student["marks"][1], minvalue=0, maxvalue=20)
+    if mark2 is None:
+        return
+    mark3 = simpledialog.askinteger("Update Student", "CW 3 (0 - 20):", initialvalue=student["marks"][2], minvalue=0, maxvalue=20)
+    if mark3 is None:
+        return
+
+    exam = simpledialog.askinteger("Update Student", "Exam (0 - 100):", initialvalue=student["exam"], minvalue=0, maxvalue=100)
+    if exam is None:
+        return
+
+    student["number"] = number
+    student["name"] = name.strip()
+    student["marks"] = [mark1, mark2, mark3]
+    student["exam"] = exam
+    save()
+
+def delete():
+    student = find()
+    if student and messagebox.askyesno("Delete", f"Delete {student['name']}?"):
+        students.remove(student)
+        save()
+
 # window
 root = ctk.CTk()
 root.title("Student Management System")
@@ -152,6 +224,14 @@ ctk.CTkButton(sidebar, text="View All", command=view_all, font=("Geist Pixel", 1
 ctk.CTkButton(sidebar, text="View One", command=view_one, font=("Geist Pixel", 14), text_color="#666666", fg_color="#F2F2F2", hover_color="#E5E5E5", corner_radius=8, height=40).pack(fill="x", padx=12, pady=5)
 ctk.CTkButton(sidebar, text="Highest", command=highest, font=("Geist Pixel", 14), text_color="#666666", fg_color="#F2F2F2", hover_color="#E5E5E5", corner_radius=8, height=40).pack(fill="x", padx=12, pady=5)
 ctk.CTkButton(sidebar, text="Lowest", command=lowest, font=("Geist Pixel", 14), text_color="#666666", fg_color="#F2F2F2", hover_color="#E5E5E5", corner_radius=8, height=40).pack(fill="x", padx=12, pady=5)
+
+ctk.CTkLabel(sidebar, text="-----------------------", font=("Geist Pixel", 14, "bold"), text_color="#AAAAAA").pack(anchor="w", padx=15, pady=(5,5))
+
+# extension
+
+ctk.CTkButton(sidebar, text="Add", command=add, font=("Geist Pixel", 14), text_color="#666666", fg_color="#F2F2F2", hover_color="#E5E5E5", corner_radius=8, height=40).pack(fill="x", padx=12, pady=5)
+ctk.CTkButton(sidebar, text="Delete", command=delete, font=("Geist Pixel", 14), text_color="#666666", fg_color="#F2F2F2", hover_color="#E5E5E5", corner_radius=8, height=40).pack(fill="x", padx=12, pady=5)
+ctk.CTkButton(sidebar, text="Update", command=update, font=("Geist Pixel", 14), text_color="#666666", fg_color="#F2F2F2", hover_color="#E5E5E5", corner_radius=8, height=40).pack(fill="x", padx=12, pady=5)
 
 sort_swap = ctk.CTkButton(sidebar, text="Sort ↑", command=sort, font=("Geist", 14), text_color="#666666", fg_color="#EAEAEA", hover_color="#DEDEDE", corner_radius=8, height=40)
 sort_swap.pack(fill="x", padx=12, pady=(25,10))
