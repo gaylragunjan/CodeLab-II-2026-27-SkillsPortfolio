@@ -111,14 +111,13 @@ descending = True
 
 def sort():
     global descending
+    average = sum(percent(student) for student in students) / len(students)
     students.sort(key=percent, reverse=descending)
-    preview("Highest First" if descending else "Lowest First", students)
+    preview("Highest First" if descending else "Lowest First", students, f"AVERAGE: {average:.2f}%")
     descending = not descending 
     sort_swap.configure(text="Sort ↑" if descending else "Sort ↓")
 
 # window
-ctk.set_appearance_mode("light")
-
 root = ctk.CTk()
 root.title("Student Management System")
 
