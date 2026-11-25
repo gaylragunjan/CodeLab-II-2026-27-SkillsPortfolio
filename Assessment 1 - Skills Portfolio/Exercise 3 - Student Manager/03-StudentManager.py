@@ -1,3 +1,6 @@
+# CodeLab II Assessment 1 || 03 Student Manager
+# Submitted By: Gayl Ragunjan Creative Computing G2 
+
 import tkinter as tk
 import os
 import json
